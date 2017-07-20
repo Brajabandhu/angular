@@ -11,6 +11,7 @@
   </head>
  <!--ng-include directive  or -->
 <header ng-include="'header.html'"></header>
+
 <!-- ng-controller directive -->
 <body ng-controller="mycontroller">
  
@@ -35,18 +36,25 @@
      <li ng-repeat="loop1 in var">
     {{loop1}}</li>
    </ul>
+  <!--order by name and age using ng-click  -->
+  <p>Order by Name and Age: </p>
+    <button ng-click="btn='name'">Order By Name</button>
+    <button ng-click="btn='age'">Order By Age</button>
   <!--Ordering data by filter  -->
-  <p>Order By Name:</p>
+  <p>Ordered as per Entered value:</p>
   <input type="text" ng-model="search" placeholder="sort by entered format">
   <ul>
-    <!--ng-show and ng-hide directive  
-    ng-hide="loop2.available" or ng-show="!loop2.available" -->
-  <li ng-repeat="loop2 in arr | orderBy:'name' | filter:search" ng-show="loop2.available">
+    <!--ng-show and ng-hide directive ng-hide="loop2.available" or ng-show="!loop2.available" -->
+    <!--below is for ordered by name  -->
+  <!-- <li ng-repeat="loop2 in arr | orderBy:'name' | filter:search" ng-show="loop2.available"> -->
+  <li ng-repeat="loop2 in arr | orderBy:btn | filter:search" ng-show="loop2.available">
    Name: {{loop2.name}},
    Age: {{loop2.age}},
    Salary:{{loop2.salary | currency:'Rs'}}
+  <!--Below function calling for remove an element  -->
+  <div class="remove" ng-click="removeEle(loop2)">x</div>
   </li>
   </ul>
-
+  
 </body>
 </html>

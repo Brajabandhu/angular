@@ -9,6 +9,11 @@ var mycontroller=function($scope){
                 {name:"pap",age:"27",salary:19999,available:false}
 
     ]
+            // for removing an element.
+    $scope.removeEle=function(loop2){
+        var val=$scope.arr.indexOf(loop2);
+        $scope.arr.splice(val,1);
+    }     
 
 }
 mymodule.controller("mycontroller",mycontroller);
